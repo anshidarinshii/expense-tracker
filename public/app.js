@@ -24,7 +24,7 @@ document.getElementById("create-account-form").addEventListener("submit", functi
     .then((data) => {
         if (data.message) {
             alert(data.message); // Success message
-            window.location.href = "/"; // Redirect to login page after successful registration
+            window.location.href = "/index.html"; // Redirect to login page after successful registration
         } else {
             alert(data.error); // Error message
         }
