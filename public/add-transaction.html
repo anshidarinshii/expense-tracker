@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Transaction</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Add Transaction</h1>
+
+        <form id="transaction-form">
+            <label for="amount">Amount</label>
+            <input type="number" id="amount" placeholder="Amount" required>
+
+            <label for="description">Description</label>
+            <input type="text" id="description" placeholder="Description" required>
+
+            <label for="date">Date</label>
+            <input type="date" id="date" required>
+
+            <button type="submit">Add Transaction</button>
+        </form>
+
+        <a href="dashboard.html" class="button-link">Back to Dashboard</a>
+    </div>
+
+    <script>
+       const urlParams = new URLSearchParams(window.location.search);
+    const type = urlParams.get('type'); // Will be either 'income' or 'expense'
+
+    // Set the form title based on the type
+    document.querySelector('h1').textContent = type === 'income' ? 'Add Income' : 'Add Expense';
+
+    // Handle form submission
+    document.getElementById('transaction-form').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const amount = parseFloat(document.getElementById('amount').value);
+        const description = document.getElementById('description').value;
+        const date = document.getElementById('date').value;
+
+        if (isNaN(amount) || !description || !date) {
+            alert('Please fill in all fields');
+            return;
+        }
+
+        // Create the transaction object
+        const transaction = {
+            user_id: JSON.parse(localStorage.getItem('user')).id,
+            amount: type === 'income' ? amount : -amount, // Negative for expense
+            description,
+            date
+        };
+
+        // Send to server
+        fetch('http://localhost:3000/transactions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(transaction)
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(`${type.charAt(0).toUpperCase() + type.slice(1)} added successfully!`);
+            window.location.href = 'dashboard.html';
+        })
+        .catch(err => {
+            console.error('Error adding transaction:', err);
+            alert('Failed to add transaction');
+        });
+    });
+    </script>
+</body>
+</html>

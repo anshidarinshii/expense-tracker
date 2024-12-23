@@ -1,0 +1,109 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000000; /* Black background */
+    color: #ffffff; /* White text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    text-align: center; /* Center text horizontally */
+    flex-direction: column;
+}
+
+/* Container Style for Forms and Tables */
+.container {
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    background-color: #1a1a1a; /* Dark grey container background */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin: 10px;
+}
+
+/* Headings */
+h1, h2, h3 {
+    color: #ffffff; /* Pure white text for headings */
+}
+
+/* Input Fields */
+input[type="text"], input[type="password"], input[type="number"], input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #2e2e2e; /* Dark grey input background */
+    color: #ffffff; /* White text */
+}
+
+/* Buttons */
+button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #d3d3d3; /* Light grey button */
+    border: none;
+    border-radius: 5px;
+    color: #000000; /* Black text for contrast */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+button:hover {
+    background-color: #e8e8e8; /* Even lighter grey on hover */
+}
+
+/* Button Links */
+.button-link {
+    display: inline-block;
+    text-align: center;
+    padding: 10px 20px;
+    background-color: #d3d3d3; /* Light grey button link */
+    color: #000000; /* Black text for contrast */
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 5px 0;
+    transition: background-color 0.3s ease;
+}
+
+.button-link:hover {
+    background-color: #e8e8e8; /* Even lighter grey on hover */
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #1a1a1a; /* Match container background */
+}
+
+table th, table td {
+    border: 1px solid #444444; /* Dark grey borders */
+    padding: 10px;
+    text-align: left;
+    color: #ffffff; /* White text */
+}
+
+table th {
+    background-color: #333333; /* Slightly darker grey for header */
+}
+
+/* Centering Content in the Page */
+.center {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Optional: Add some spacing for responsive layout */
+@media (max-width: 600px) {
+    .container {
+        max-width: 90%; /* Make the container more responsive on small screens */
+    }
+}

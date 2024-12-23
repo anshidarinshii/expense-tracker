@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Dashboard</h1>
+
+        <!-- Welcome Message with Username -->
+        <h3>Welcome, <span id="username">[User]</span></h3>
+
+        <!-- Currency Selector -->
+        <div>
+            <label for="currency">Currency: </label>
+            <select id="currency">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="INR">INR</option>
+                <!-- Add more currencies here -->
+            </select>
+        </div>
+
+        <!-- Summary of Income, Expenses, and Balance -->
+        <div>
+            <h3>Total Income: 
+                <span id="total-income-value">0.00</span> 
+                <span id="total-income-currency">USD</span>
+            </h3>
+            <h3>Total Expense: 
+                <span id="total-expense-value">0.00</span> 
+                <span id="total-expense-currency">USD</span>
+            </h3>
+            <h3>Balance: 
+                <span id="balance-value">0.00</span> 
+                <span id="balance-currency">USD</span>
+            </h3>
+
+        <!-- Options to Add Transactions -->
+        <div>
+            <h3>Add a Transaction</h3>
+            <button id="add-income-btn">Add Income</button>
+            <button id="add-expense-btn">Add Expense</button>
+        </div>
+
+        <!-- View Transaction History Button -->
+        <a href="transactions.html" class="button-link">View Transaction History</a>
+
+        <!-- Logout Button -->
+        <a href="login.html" class="button-link">Logout</a>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
