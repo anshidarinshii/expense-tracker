@@ -31,7 +31,7 @@ db.connect((err) => {
 
 // Serve login page when user accesses the root URL
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "login.html"));
+    res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 // Create a user (for registration)
