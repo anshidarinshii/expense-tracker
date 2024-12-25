@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <form id="login-form">
+            <input type="text" id="username" name="username" placeholder="Username" required><br>
+            <input type="password" id="password" name="password" placeholder="Password" required><br>
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="create-account.html" class="button-link">Create one</a></p>
+    </div>
+
+    <script >
+     // Handle login form submission
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        const loginData = {
+            username: username,
+            password: password
+        };
+
+        console.log("Sending login request:", loginData);  // Debugging log
+
+        // Send login data to the server
+        fetch('http://localhost:3000/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(loginData)
+        })
+        .then(response => {
+            console.log("Received response:", response);  // Debugging log
+            return response.json();
+        })
+        .then(data => {
+            console.log("Server response:", data);  // Debugging log
+
+            if (data.message === "Login successful!") {
+                console.log("Login successful, redirecting to dashboard...");  // Debugging log
+                // Store user information to localStorage (or sessionStorage)
+                localStorage.setItem('user', JSON.stringify(data.user)); // Save user data
+                localStorage.setItem('currency', 'USD');  // Set a default currency
+                
+                // Redirect to the dashboard page after login success
+                window.location.href = 'dashboard.html';
+            } else {
+                alert(data.error || 'Login failed');
+            }
+        })
+        .catch(err => {
+            console.error('Error:', err);
+            alert('Login failed. Please try again.');
+        });
+    });
+    </script>
+</body>
+</html>
